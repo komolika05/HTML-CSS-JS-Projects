@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            font-size: 45px;
+            color: teal;
+            text-align: center;
+        }
+        #btn{
+            background-color: teal;
+            width: 240px;
+            color: white;
+            height: 45px;
+            border-radius: 22px;
+            margin-top: 28px;
+        }
+        #di{
+            width: 80%;
+            margin: auto;
+        }
+        #total{
+            color: green;
+        }
+        img{
+            height: 120px;
+            margin-bottom: 1px;
+            margin-left: 5%;
+        }
+        form{
+            margin-left: 5%;
+        }
+        h2{
+            text-align: center;
+            color: teal;
+            font-size: 38px;
+        }
+        #show {
+            background-color: teal;
+            width: 240px;
+            color: white;
+            height: 45px;
+            border-radius: 22px;
+            margin-top: 28px;
+            margin-left: 70%;
+        }
+        #fin{
+            display: none;
+        }
+        #back{
+            background-color: teal;
+            width: 240px;
+            color: white;
+            height: 45px;
+            border-radius: 22px;
+            margin-top: 28px;
+            margin-left: 70%;
+            display: none;
+        }
+        #clear{
+            background-color: teal;
+            width: 240px;
+            color: white;
+            height: 45px;
+            border-radius: 22px;
+            margin-top: 28px;
+            margin-left: 70%;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <img src="imgs/pngtree-school-logo-png-image_6851480.png">
+    <hr style="margin-top: 1px;">
+<div id="first">
+    <form>
+        <label style="font-size: 18px; color:green;">Enter your Details</label>
+        <p>Name</p><input type="text" name="username" placeholder="Name" id="nm" onchange="onNameChange(this.value)">
+        <p>Class</p><input type="text" name="Class" placeholder="Class" id="cl" onchange="onClassChange(this.value)">
+       <p>Roll No.</p><input type="text" name="Roll No." placeholder="Roll no" id="rn" onchange="onRollChange(this.value)">
+    </form>
+    <h1>Marksheet System</h1>
+    <table style="text-align: center; width: 80%; margin: auto;" border="2">
+        <tr><th>Subjects</th>
+        <th>Marks</th>
+        <th>Evaluation</th></tr>
+        <tr>
+            <td>Hindi</td>
+            <td><input type="text" name="t1" onchange="pass1(this.value)" id="t1"></td>
+            <td><label for="" id="l1"></label></td>
+        </tr>
+        <tr>
+            <td>Maths</td>
+            <td><input type="text" name="t2" onchange="pass2(this.value)" id="t2"></td>
+            <td><label for="" id="l2"></label></td>
+        </tr>
+        <tr>
+            <td>English</td>
+            <td><input type="text" name="t3" onchange="pass3(this.value)" id="t3"></td>
+            <td><label for="" id="l3"></label></td>
+        </tr>
+        <tr>
+            <td>Science</td>
+            <td><input type="text" name="t4" onchange="pass4(this.value)" id="t4"></td>
+            <td><label for="" id="l4"></label></td>
+        </tr>
+        <tr>
+            <td>Sc. Science</td>
+            <td><input type="text" name="t5" onchange="pass5(this.value)" id="t5"></td>
+            <td><label for="" id="l5"></label></td>
+        </tr>
+
+    </table>
+    <div  id="di"><button id="btn" onclick="gen()" style="margin-left: 75%;">Generate Result</button>
+    <h1 id="total">Result will be displayed here!</h1>
+    <h1 id="status"></h1>
+    <h1 id="grade"></h1>
+    </div>
+</div>
+    <button id="show" onclick="report()">Show Result</button>
+    <button id="back" onclick="back()">Back</button>
+    <button id="clear" onclick="clear()">Clear</button>
+    <div id="fin">
+    <h2>Final Report Card</h2>
+    <table style="width: 80%; margin: auto;" border="2" id="card">
+        <tr>
+            <th>Name</th>
+            <th>Class</th>
+            <th>Roll No.</th>
+            <th>Result</th>
+            <th>Grade</th>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr></tr>
+    </table>
+    </div>
+    <script>
+        var cnt=0
+        const result = {
+            "name" : "",
+            "class" : "",
+            "roll_no" : "",
+            "total" : 0,
+            "grade" : ""
+
+        }
+        const marks = {
+            "hindi": 0,
+            "maths": 0,
+            "english": 0,
+            "science": 0,
+            "ssc": 0
+        }
+        function onNameChange(name){
+            result.name=name
+        }
+        function onClassChange(className){
+            result.class=className
+        }
+        function onRollChange(roll){
+            result.roll_no=roll
+        }
+        function pass1(x){
+            var lab=document.querySelector("#l1")
+            marks.hindi = x
+            if(x>33)
+                lab.innerHTML="Pass"
+            else{
+                lab.innerHTML="Fail"
+                cnt++;
+            }
+        }
+
+        function pass2(x){
+            var lab=document.querySelector('#l2')
+            marks.maths = x
+
+            if (x>35)
+                lab.innerHTML="Pass"
+            else{
+                lab.innerHTML="Fail"
+                cnt++;
+            }
+        }
+
+        function pass3(x){
+            var lab=document.querySelector('#l3')
+            marks.english = x
+
+            if (x>45)
+                lab.innerHTML="Pass"
+            else{
+                lab.innerHTML="Fail"
+                cnt++;
+            }
+        }
+
+        function pass4(x){
+            var lab=document.querySelector('#l4')
+            marks.science = x
+
+            if(x>40)
+                lab.innerHTML="Pass"
+            else{
+                lab.innerHTML="Fail"
+                cnt++;
+            }
+        }
+
+        function pass5(x){
+            var lab=document.querySelector("#l5")
+            marks.ssc = x
+
+            if (x>38)
+                lab.innerHTML="Pass"
+            else{
+                lab.innerHTML="Fail"
+                cnt++;
+            }
+        }
+        let results = [];
+        function gen() {
+            var x1=document.querySelector("#t1").value;
+            var x2=document.querySelector("#t2").value;
+            var x3=document.querySelector("#t3").value;
+            var x4=document.querySelector("#t4").value;
+            var x5=document.querySelector("#t5").value;
+            var total=Number(x1)+Number(x2)+Number(x3)+Number(x4)+Number(x5)
+            var tot=document.querySelector("#total")
+            var st=document.querySelector("#status")
+            tot.innerHTML="Total is "+total
+
+            if(cnt>0){
+                st.innerHTML="Fail in "+cnt+" subjects"
+            }
+            else
+            st.innerHTML="Pass and promoted in next class"
+            
+            var gd=document.querySelector("#grade")
+            let grade;
+            if (total>450){
+                grade="A+"
+            }
+            else if (total>400){
+                grade="A"
+            }
+            else if (total>300){
+                grade="B+"
+            }
+            else if (total>200){
+                grade="B"
+             }
+            else if(total>100){
+                grade="C"
+            }
+            else{
+            grade="D"
+            }
+            gd.innerHTML="Your grade is " + grade;
+            result.grade=grade
+            result.total=total
+
+            // If no value, create empty array and store it in localstorage
+
+            // if value, add to existing array
+
+            
+            // check if local storage has some values already
+            var existingResults=localStorage.getItem("results")
+            if (existingResults){
+                results=JSON.parse(existingResults)
+            }
+            results.push(result)
+            var stringyfiedResults = JSON.stringify(results)
+            localStorage.setItem("results",stringyfiedResults)
+
+        }
+
+        function report(){
+            
+            document.getElementById("fin").style.display="block";
+            document.getElementById("first").style.display="none";
+            document.getElementById("show").style.display="none";
+            document.getElementById("back").style.display="block";
+            document.getElementById("clear").style.display="block";
+
+            var results=localStorage.getItem("results")
+            const resultsArray=JSON.parse(results)
+            console.log(resultsArray)
+            const table = document.getElementById("card");
+            if (resultsArray==null){
+                return
+            }
+            for (const result of resultsArray){
+                const newRow = document.createElement("tr");
+                const nameCell = document.createElement("td");
+                const classCell = document.createElement("td");
+                const rollCell = document.createElement("td");
+                const totalCell = document.createElement("td");
+                const gradeCell = document.createElement("td");
+                nameCell.textContent=result.name
+                classCell.textContent=result.class
+                rollCell.textContent=result.roll_no
+                totalCell.textContent=result.total
+                gradeCell.textContent=result.grade
+                newRow.appendChild(nameCell);
+                newRow.appendChild(classCell);
+                newRow.appendChild(rollCell);
+                newRow.appendChild(totalCell);
+                newRow.appendChild(gradeCell);
+                table.appendChild(newRow)
+            }
+        
+        }
+
+        function back(){
+            document.getElementById("fin").style.display="none";
+            document.getElementById("first").style.display="block";
+            document.getElementById("back").style.display="none";
+            document.getElementById("show").style.display="block";
+            document.getElementById("clear").style.display="none";
+        }
+
+        function clear(){
+            
+            localStorage.clear()
+            const table=document.getElementById("card")
+            const rows = table.getElementsByTagName("tr");
+            console.log(rows)
+            // for (let i = 1; i < rows.length; i++) {
+            //     //alert('hi'+i);
+            // // table.removeChild("tr")
+            // // document.getElementById("clear").style.display="none";
+            // // document.getElementById("fin").style.display="none";
+            // // document.getElementById("first").style.display="block";
+            // // document.getElementById("back").style.display="none";
+            // // document.getElementById("show").style.display="block";
+
+            
+            // }
+            table.style.display="none"
+            location.reload();
+
+        }
+        const clearButton = document.getElementById('clear');
+        clearButton.addEventListener("click", clear);
+    </script>
+</body>
+</html>
