@@ -1,3 +1,2 @@
-# Marksheet_System
-Efficient JavaScript-powered marksheet generator enabling users to input data and receive accurate results. Seamlessly calculates scores, grades, and pass status, simplifying marksheet creation and assessment.
-#MarksheetGenerator, #JavaScriptProgram, #ScoreCalculation, #GradeCalculation, #PassStatus, #UserFriendlyInterface, #AutomatedAssessment, #EducationalTool, #StudentPerformance, #ResultGeneration, #WebApplication, #DataInput, #DynamicCalculation, #CustomizableFields, #SimplifiedEvaluation
+# JavaScript Projects
+Proficient in HTML, CSS, and JavaScript, I bring concepts to life through clean, responsive designs and interactive functionality. Explore my GitHub repository for a showcase of projects reflecting my dedication to creating dynamic and visually appealing web solutions. #JavaScriptProjects #FrontEndDevelopment #WebDev #CodeLife #CodingCommunity #JSCode #WebApps #InteractiveWeb #JavaScriptCoding #TechPortfolio #FullStack #CodingJourney #Programming
